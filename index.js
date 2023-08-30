@@ -23,13 +23,13 @@ app.use(express.static('./assets'));
 app.set("view engine", "ejs");
 app.set("views", "./views");
 
-// setting up routes
+// setting up routers
 app.use('/', require('./routes'));
 
 // directing the app in the given port 
 app.listen(port, function(err) {
     if(err) {
-        console.log('Error', err);
+        console.log('Error to connect server', err);
         return;
     }
     console.log('Server is up and running on port: ', port);

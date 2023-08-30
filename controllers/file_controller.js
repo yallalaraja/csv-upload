@@ -1,19 +1,19 @@
-/** ------------------ IMPORTING PACKAGE/MODELS ------------------ **/
+//Importing required packages
 const fs = require('fs');
 const csvParser = require('csv-parser');
 const CSV = require('../models/csv');
 const path = require('path');
 
-/** ------------------ EXPORTING FUNCTION To upload a file ------------------ **/
+//Exporting function to upload a file
 module.exports.upload = async function(req, res) {
     try {
-        // file is not present
+        // file is not present or selected
         if(!req.file) {
-            return res.status(400).send('No files were uploaded.');
+            return res.status(400).send('No files were selected.');
         }
-        // file is not csv
+        // file is not csv type
         if(req.file.mimetype != "text/csv") {
-            return res.status(400).send('Select CSV files only.');
+            return res.status(400).send('Please select CSV files only.');
         }
         // console.log(req.file);
         let file = await CSV.create({
@@ -28,7 +28,7 @@ module.exports.upload = async function(req, res) {
     }
 }
 
-/** ------------------ EXPORTING FUNCTION To open file viewer page ------------------ **/
+/**  EXPORTING FUNCTION To open file viewer page  **/
 module.exports.view = async function(req, res) {
     try {
         // console.log(req.params);
@@ -36,7 +36,7 @@ module.exports.view = async function(req, res) {
         // console.log(csvFile);
         const results = [];
         const header =[];
-        fs.createReadStream(csvFile.filePath) //seeting up the path for file upload
+        fs.createReadStream(csvFile.filePath) //setting up the path for file upload
         .pipe(csvParser())
         .on('headers', (headers) => {
             headers.map((head) => {
@@ -47,8 +47,7 @@ module.exports.view = async function(req, res) {
         .on('data', (data) =>
         results.push(data))
         .on('end', () => {
-            // console.log(results.length);
-            // console.log(results);
+            
             res.render("file_viewer", {
                 title: "File Viewer",
                 fileName: csvFile.fileName,
@@ -65,7 +64,7 @@ module.exports.view = async function(req, res) {
     }
 }
 
-/** ------------------ EXPORTING FUNCTION To delete the file ------------------ **/
+/**  EXPORTING FUNCTION To delete the file **/
 module.exports.delete = async function(req, res) {
     try {
         // console.log(req.params);
