@@ -1,5 +1,5 @@
-
 const express = require('express');
+const serverless = require('serverless-http')
 const port = 8000;
 const app = express();
 const path = require('path');
@@ -26,6 +26,8 @@ app.set("views", "./views");
 // setting up routers
 app.use('/', require('./routes'));
 
+// app.use('/.netlify/functions/api',router);
+
 // directing the app in the given port 
 app.listen(port, function(err) {
     if(err) {
@@ -35,3 +37,5 @@ app.listen(port, function(err) {
     console.log('Server is up and running on port: ', port);
 
 });
+
+// module.exports.handler = serverless(app);
