@@ -54,8 +54,8 @@ td {
 }
 th {
   font-weight: bold;
-  background-color: #4682b4;
-  color: white;
+  background-color: cyan;
+  color: rgb(20, 20, 20);
   text-transform: uppercase;
   font-size: 14px;
   border-top: 2px solid #ddd;
