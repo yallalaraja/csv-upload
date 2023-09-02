@@ -79,15 +79,38 @@ Follow these steps to get the project up and running on your local machine:
 
 ## Directory Structure
 
-The project follows the MVC (Model-View-Controller) pattern, with the following directory structure:
+The project follows the MVC (Model-View-Controller) pattern and has the following directory structure:
 
-- **assets**: Contains CSS and JavaScript files.
-- **config**: Includes MongoDB configuration.
-- **controllers**: Houses file and home controllers.
-- **models**: Contains the CSV model.
-- **routes**: Defines application routes.
-- **uploads**: For storing uploaded files.
-- **views**: Contains EJS templates for rendering.
+```
+csv-upload
+    |-----assets
+    |       |--- css
+    |       |     |-- fileviewer.css
+    |       |     |-- header.css
+    |       |     |-- home.css
+    |       |--- JS
+    |             |-- file_viewer.js
+    |------ config
+    |         └--- mongoose.js
+    |------ controllers
+    |         └--- file_controller.js
+    |         |--- home_controller.js
+    |------ models
+    |         └--- csv.js
+    |------ routes
+    |         └--- index.js
+    |------ uploads
+    |         |--- files
+    |------ views
+    |         |--- file_viewer.ejs
+    |         |--- home.ejs
+    |         |--- layout.ejs
+    |------ .gitignore
+    |------ index.js
+    |------ package.json
+    |------ package-lock.json
+    └------ README.md
+```
 
 ## How to Run
 
@@ -104,4 +127,4 @@ This will launch the application locally. Access it by opening your web browser 
 If you have suggestions or improvements, please fork the repository, make your changes, and submit a pull request. We appreciate your contributions!
 ```
 
-This revised README provides a comprehensive overview of your project, including its features, technology stack, how to get started, directory structure, and contribution guidelines.
+This revised README now includes the directory structure of your project, providing a clear picture of the project's organization.
